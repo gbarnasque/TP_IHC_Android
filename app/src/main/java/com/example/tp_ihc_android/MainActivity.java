@@ -10,6 +10,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.squareup.picasso.Picasso;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -20,6 +21,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -35,6 +37,7 @@ public class MainActivity<string> extends AppCompatActivity {
 
     Button btnTeste;
     TextView tvTeste;
+    ImageView imgView;
 
     RequestQueue queue;
     String url = "https://dog.ceo/api/breeds/image/random/";
@@ -47,6 +50,7 @@ public class MainActivity<string> extends AppCompatActivity {
 
         btnTeste = findViewById(R.id.btnTeste);
         tvTeste = findViewById(R.id.tvTeste);
+        imgView = findViewById(R.id.imageView);
 
         queue = Volley.newRequestQueue(this);
         url = "https://dog.ceo/api/breeds/image/random";
@@ -58,6 +62,7 @@ public class MainActivity<string> extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String test = jsonObject.optString("message");
+                            Picasso.get().load(test).into(imgView);
                             tvTeste.setText(test);
                         }
                         catch (Exception e) {
