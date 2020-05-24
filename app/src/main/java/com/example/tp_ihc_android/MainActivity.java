@@ -40,7 +40,7 @@ public class MainActivity<string> extends AppCompatActivity {
     ImageView imgView;
 
     RequestQueue queue;
-    String url = "https://dog.ceo/api/breeds/image/random/";
+    String url;
     StringRequest stringRequest;
 
     @Override
@@ -53,7 +53,8 @@ public class MainActivity<string> extends AppCompatActivity {
         imgView = findViewById(R.id.imageView);
 
         queue = Volley.newRequestQueue(this);
-        url = "https://dog.ceo/api/breeds/image/random";
+        //url = "https://dog.ceo/api/breeds/image/random";
+        url = "http://192.168.0.18:80/teste";
         // Request a string response from the provided URL.
         stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -62,23 +63,26 @@ public class MainActivity<string> extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String test = jsonObject.optString("message");
-                            Picasso.get().load(test).into(imgView);
+                            //Picasso.get().load(test).into(imgView);
                             tvTeste.setText(test);
                         }
                         catch (Exception e) {
                             e.printStackTrace();
                             Log.wtf("erro", e.getMessage());
                             Log.d("erro", e.getMessage());
-                            tvTeste.setText("deu ruim.");
+                            tvTeste.setText("deu ruim1.");
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        tvTeste.setText("deu ruim.");
+                        Log.wtf("erro", error.getMessage());
+                        Log.d("erro", error.getMessage());
+                        tvTeste.setText("deu ruim2.");
                     }
                 });
+
 
         btnTeste.setOnClickListener(new View.OnClickListener() {
             @Override
