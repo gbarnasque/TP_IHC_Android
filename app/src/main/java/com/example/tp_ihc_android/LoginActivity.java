@@ -2,30 +2,25 @@ package com.example.tp_ihc_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
+
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.UnsupportedEncodingException;
 
@@ -104,9 +99,13 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 };
 
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //showAlertDialogButtonClicked(v);
+
                 JSONObject jsonObject = new JSONObject();
                 try {
                     jsonObject.put("email", etEmail.getText().toString());
@@ -125,9 +124,24 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void changeActivity(){
-        Intent intent = new Intent(appContext, TesteActivity.class);
+        Intent intent = new Intent(this, TesteActivity.class);
         startActivity(intent);
     }
+
+    public void showAlertDialogButtonClicked(View view) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Não foi possível realizar o login.");
+        builder.setMessage("Por gentileza, tente novamente.");
+
+
+        builder.setPositiveButton("Tentar Novamente", null);
+
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
     //public String getEmail(){
         //String texto = email.getText(;
 
