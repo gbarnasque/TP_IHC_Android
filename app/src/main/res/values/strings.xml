@@ -17,4 +17,7 @@
     <string name="senha_hint">Insira sua senha</string>
 
     <string name="login">Logar</string>
+
+    <string name="marcar">Marcar presença</string>
+    <string name="presencas">4</string>
 </resources>

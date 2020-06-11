@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DashboardActivity">
+
+    <!-- Background -->
+    <View
+        android:id="@+id/background"
+        android:layout_width="fill_parent"
+        android:layout_height="500dp"
+        android:background="@drawable/ic_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <!-- Icon Book -->
+
+
+    <!-- Numero de presenças -->
+    <RelativeLayout
+        android:id="@+id/icon_book"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/icon_book"
+        android:clipToOutline="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/presencas"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="152dp"
+        android:layout_marginLeft="152dp"
+        android:layout_marginTop="330dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/presencas"
+        android:textAppearance="@style/presencas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Marcar presença -->
+    <View
+        android:id="@+id/rectangle_button"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginBottom="120dp"
+        android:background="@drawable/rectangle_button"
+        app:layout_constraintBottom_toBottomOf="@+id/background"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/marcar_pres"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/marcar"
+        android:textAppearance="@style/marcar"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/rectangle_button"
+        app:layout_constraintTop_toTopOf="@+id/rectangle_button" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
