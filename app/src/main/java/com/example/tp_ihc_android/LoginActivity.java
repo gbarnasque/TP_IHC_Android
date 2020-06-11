@@ -3,6 +3,7 @@ package com.example.tp_ihc_android;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,11 +37,12 @@ public class LoginActivity extends AppCompatActivity {
     EditText etSenha;
     TextView tvTeste;
 
-
     Button btnLogin;
 
     StringRequest stringRequest;
     String requestBody;
+
+    //String teste;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +55,8 @@ public class LoginActivity extends AppCompatActivity {
         etEmail = (EditText)findViewById(R.id.tvEmail);
         etSenha = (EditText)findViewById(R.id.tvSenha);
         btnLogin = findViewById(R.id.btnLogin);
-        tvTeste = findViewById(R.id.tvTeste);
+        //tvTeste = findViewById(R.id.tvTeste);
+        //MainScreen = new Intent(this, LoginActivity.class);
 
         stringRequest = new StringRequest(Request.Method.POST, ConnectSingleton.getInstance(appContext).getEndpoint() + "user/login",
                 new Response.Listener<String>() {
@@ -61,14 +64,18 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject responseObject = new JSONObject(response);
-                            tvTeste.setText(responseObject.optString("status"));
 
+                            //tvTeste.setText(responseObject.optString("status"));
+                            //teste = responseObject.optString("status");
+                            if(responseObject.optString("status").equals("OK")) {
+                                changeActivity();
+                            }
                         }
                         catch (Exception e) {
                             e.printStackTrace();
                             //Log.wtf("erro", e.getMessage());
                             //Log.d("erro", e.getMessage());
-                            tvTeste.setText(ConnectSingleton.getInstance(appContext).getEndpoint() + "user/login1");
+                            //tvTeste.setText(ConnectSingleton.getInstance(appContext).getEndpoint() + "user/login1");
                         }
                     }
                 },
@@ -77,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         //Log.wtf("erro", error.getMessage());
                         //Log.d("erro", error.getMessage());
-                        tvTeste.setText(ConnectSingleton.getInstance(appContext).getEndpoint() + "user/login2");
+                       // tvTeste.setText(ConnectSingleton.getInstance(appContext).getEndpoint() + "user/login2");
                     }
                 }) {
                     @Override
@@ -111,11 +118,16 @@ public class LoginActivity extends AppCompatActivity {
                 requestBody = jsonObject.toString();
 
                 ConnectSingleton.getInstance(appContext).addToRequestQueue(stringRequest);
+
             }
         });
 
     }
 
+    private void changeActivity(){
+        Intent intent = new Intent(appContext, TesteActivity.class);
+        startActivity(intent);
+    }
     //public String getEmail(){
         //String texto = email.getText(;
 
