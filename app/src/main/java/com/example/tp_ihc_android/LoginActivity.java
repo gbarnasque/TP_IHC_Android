@@ -2,27 +2,25 @@ package com.example.tp_ihc_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
+
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.UnsupportedEncodingException;
 
@@ -34,11 +32,12 @@ public class LoginActivity extends AppCompatActivity {
     EditText etSenha;
     TextView tvTeste;
 
-
     Button btnLogin;
 
     StringRequest stringRequest;
     String requestBody;
+
+    //String teste;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +45,13 @@ public class LoginActivity extends AppCompatActivity {
 
         appContext = this.getApplicationContext();
 
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login2);
+
         etEmail = (EditText)findViewById(R.id.tvEmail);
         etSenha = (EditText)findViewById(R.id.tvSenha);
         btnLogin = findViewById(R.id.btnLogin);
-        tvTeste = findViewById(R.id.tvTeste);
+        //tvTeste = findViewById(R.id.tvTeste);
+        //MainScreen = new Intent(this, LoginActivity.class);
 
         stringRequest = new StringRequest(Request.Method.POST, ConnectSingleton.getInstance(appContext).getEndpoint() + "user/login",
                 new Response.Listener<String>() {
@@ -58,14 +59,18 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject responseObject = new JSONObject(response);
-                            tvTeste.setText(responseObject.optString("status"));
 
+                            //tvTeste.setText(responseObject.optString("status"));
+                            //teste = responseObject.optString("status");
+                            if(responseObject.optString("status").equals("OK")) {
+                                changeActivity();
+                            }
                         }
                         catch (Exception e) {
                             e.printStackTrace();
                             //Log.wtf("erro", e.getMessage());
                             //Log.d("erro", e.getMessage());
-                            tvTeste.setText(ConnectSingleton.getInstance(appContext).getEndpoint() + "user/login1");
+                            //tvTeste.setText(ConnectSingleton.getInstance(appContext).getEndpoint() + "user/login1");
                         }
                     }
                 },
@@ -74,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         //Log.wtf("erro", error.getMessage());
                         //Log.d("erro", error.getMessage());
-                        tvTeste.setText(ConnectSingleton.getInstance(appContext).getEndpoint() + "user/login2");
+                       // tvTeste.setText(ConnectSingleton.getInstance(appContext).getEndpoint() + "user/login2");
                     }
                 }) {
                     @Override
@@ -94,9 +99,13 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 };
 
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //showAlertDialogButtonClicked(v);
+
                 JSONObject jsonObject = new JSONObject();
                 try {
                     jsonObject.put("email", etEmail.getText().toString());
@@ -108,8 +117,29 @@ public class LoginActivity extends AppCompatActivity {
                 requestBody = jsonObject.toString();
 
                 ConnectSingleton.getInstance(appContext).addToRequestQueue(stringRequest);
+
             }
         });
+
+    }
+
+    private void changeActivity(){
+        Intent intent = new Intent(this, TesteActivity.class);
+        startActivity(intent);
+    }
+
+    public void showAlertDialogButtonClicked(View view) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Não foi possível realizar o login.");
+        builder.setMessage("Por gentileza, tente novamente.");
+
+
+        builder.setPositiveButton("Tentar Novamente", null);
+
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     //public String getEmail(){
