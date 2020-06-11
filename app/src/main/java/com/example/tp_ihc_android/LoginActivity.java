@@ -6,6 +6,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -46,7 +48,8 @@ public class LoginActivity extends AppCompatActivity {
 
         appContext = this.getApplicationContext();
 
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login2);
+
         etEmail = (EditText)findViewById(R.id.tvEmail);
         etSenha = (EditText)findViewById(R.id.tvSenha);
         btnLogin = findViewById(R.id.btnLogin);
@@ -110,6 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                 ConnectSingleton.getInstance(appContext).addToRequestQueue(stringRequest);
             }
         });
+
     }
 
     //public String getEmail(){

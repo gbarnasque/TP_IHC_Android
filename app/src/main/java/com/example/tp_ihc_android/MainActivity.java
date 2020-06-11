@@ -97,5 +97,4 @@ public class MainActivity<string> extends AppCompatActivity {
         });
         */
     }
-
 }
