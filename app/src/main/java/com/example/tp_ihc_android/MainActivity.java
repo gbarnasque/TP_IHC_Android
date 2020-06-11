@@ -1,5 +1,6 @@
 package com.example.tp_ihc_android;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.android.volley.Request;
@@ -46,8 +47,11 @@ public class MainActivity<string> extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+        Intent loginScreen = new Intent(this, LoginActivity.class);
+        startActivity(loginScreen);
+    /*
+        setContentView(R.layout.activity_main);
         btnTeste = findViewById(R.id.btnTeste);
         tvTeste = findViewById(R.id.tvTeste);
         imgView = findViewById(R.id.imageView);
@@ -91,5 +95,7 @@ public class MainActivity<string> extends AppCompatActivity {
                 queue.add(stringRequest);
             }
         });
+        */
     }
+
 }
