@@ -19,11 +19,11 @@
 
     <!--
         Font family: Roboto
-        Line height: 18sp
+        Line height: 76sp
     -->
-    <style name="marcar">
+    <style name="title1">
         <item name="android:textSize">
-            15sp
+            65sp
         </item>
         <item name="android:textColor">
             #EE5656
@@ -31,15 +31,15 @@
     </style>
 
     <!--
-        Font family: Roboto
-        Line height: 76sp
-    -->
-    <style name="presencas">
+    Font family: Roboto
+    Line height: 18sp
+-->
+    <style name="title2">
         <item name="android:textSize">
-            65sp
+            15sp
         </item>
         <item name="android:textColor">
-            #FFFFFF
+            #EE5656
         </item>
     </style>
 
