@@ -13,7 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".DashboardActivity"></activity>
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".ConfiguracoesActivity"></activity>
+        <activity android:name=".JustificativaActivity" />
+        <activity android:name=".ListaPresencasActivity" />
+        <activity android:name=".MarcarPresencaActivity" />
+        <activity android:name=".TesteActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
