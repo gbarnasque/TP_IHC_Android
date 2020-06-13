@@ -103,9 +103,13 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //showAlertDialogButtonClicked(v);
-
+                if(etSenha.getText().toString().equals("1111")){
+                    showAlertDialogButtonClicked(v);
+                }
+                else {
+                    changeActivity();
+                }
+                /*
                 JSONObject jsonObject = new JSONObject();
                 try {
                     jsonObject.put("email", etEmail.getText().toString());
@@ -117,17 +121,20 @@ public class LoginActivity extends AppCompatActivity {
                 requestBody = jsonObject.toString();
 
                 ConnectSingleton.getInstance(appContext).addToRequestQueue(stringRequest);
-
+                */
             }
         });
 
     }
 
     private void changeActivity(){
-        Intent intent = new Intent(this, TesteActivity.class);
+        Intent intent = new Intent(this, DashboardActivity.class);
         startActivity(intent);
     }
 
+    private void checkPassword(){
+
+    }
     public void showAlertDialogButtonClicked(View view) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

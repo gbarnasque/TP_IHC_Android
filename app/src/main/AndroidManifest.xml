@@ -12,11 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DashboardActivity"></activity>
-        <activity android:name=".ConfiguracoesActivity"></activity>
-        <activity android:name=".JustificativaActivity" />
-        <activity android:name=".ListaPresencasActivity" />
-        <activity android:name=".MarcarPresencaActivity" />
+        <activity android:name=".DashboardActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ConfiguracoesActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".JustificativaActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ListaPresencasActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MarcarPresencaActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".TesteActivity" />
         <activity
             android:name=".LoginActivity"
