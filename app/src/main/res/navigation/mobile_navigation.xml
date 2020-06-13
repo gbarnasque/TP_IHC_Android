@@ -8,19 +8,16 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.tp_ihc_android.ui.home.HomeFragment"
-        android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
     </fragment>
 
     <fragment
         android:id="@+id/nav_history"
         android:name="com.example.tp_ihc_android.ui.history.HistoryFragment"
-        android:label="@string/menu_history"
         tools:layout="@layout/fragment_history" />
 
     <fragment
         android:id="@+id/nav_justification"
         android:name="com.example.tp_ihc_android.ui.justification.JustificationFragment"
-        android:label="@string/menu_justification"
         tools:layout="@layout/fragment_justification" />
 </navigation>
