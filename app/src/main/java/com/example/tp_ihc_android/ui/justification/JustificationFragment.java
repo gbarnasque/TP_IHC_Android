@@ -1,4 +1,4 @@
-package com.example.tp_ihc_android.ui.gallery;
+package com.example.tp_ihc_android.ui.justification;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.tp_ihc_android.R;
 
-public class GalleryFragment extends Fragment {
+public class JustificationFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private JustificationViewModel justificationViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        justificationViewModel =
+                ViewModelProviders.of(this).get(JustificationViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_justification, container, false);
+        final TextView textView = root.findViewById(R.id.text_slideshow);
+        justificationViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
