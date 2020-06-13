@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DashboardActivity">
+    tools:context=".ui.home.HomeFragment">
 
     <!-- Background -->
     <View
@@ -131,6 +131,4 @@
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="@+id/rectangle_button"
         app:layout_constraintTop_toTopOf="@+id/rectangle_button" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

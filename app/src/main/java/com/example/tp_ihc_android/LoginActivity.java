@@ -128,7 +128,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void changeActivity(){
-        Intent intent = new Intent(this, DashboardActivity.class);
+        Intent intent = new Intent(this, MenuBar.class);
         startActivity(intent);
     }
 
