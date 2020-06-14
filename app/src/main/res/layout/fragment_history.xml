@@ -651,7 +651,7 @@
             <FrameLayout
                 android:layout_width="53dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/ic_border_squared_red">
+                android:background="@drawable/ic_border_squared_yellow">
 
                 <TextView
                     android:id="@+id/tvSemana4Terca"
@@ -669,7 +669,7 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/ic_check_void"
+                    android:background="@drawable/ic_check"
                     android:clickable="false" />
             </FrameLayout>
 
