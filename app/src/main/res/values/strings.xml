@@ -36,4 +36,11 @@
     <string name="menu_justification">Justificativa</string>
     <string name="menu_set_presence">Marcar Presença</string>
 
+
+    <string name="tabela_D">D</string>
+    <string name="tabela_S">S</string>
+    <string name="tabela_T">T</string>
+    <string name="tabela_Q">Q</string>
+
+    <string name="mes_fill">Dezembro/2020</string>
 </resources>
