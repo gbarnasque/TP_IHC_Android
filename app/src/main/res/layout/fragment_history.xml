@@ -2,21 +2,982 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ivMesAnterior"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.history.HistoryFragment">
 
-    <TextView
-        android:id="@+id/text_gallery"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+    <View
+        android:id="@+id/background"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:background="@drawable/ic_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="348dp"
+        android:layout_height="400dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/background"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65999997">
+
+        <TableRow
+            android:id="@+id/th"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_weight=".1">
+
+            <TextView
+                android:id="@+id/tvTableHeader1"
+                android:layout_width="42dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_round_top_left_gray"
+                android:clickable="false"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/tabela_D"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvTableHeader2"
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared"
+                android:clickable="false"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/tabela_S"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvTableHeader"
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared"
+                android:clickable="false"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/tabela_T"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvTableHeader3"
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared"
+                android:clickable="false"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/tabela_Q"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvTableHeader4"
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared"
+                android:clickable="false"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/tabela_Q"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvTableHeader5"
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared"
+                android:clickable="false"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/tabela_S"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvTableHeader7"
+                android:layout_width="42dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_round_top_right_gray"
+                android:clickable="false"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/tabela_S"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tr1"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_weight=".3">
+
+            <FrameLayout
+                android:layout_width="42dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared_gray">
+
+                <TextView
+                    android:id="@+id/tvSemana1Domingo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start|end"
+                    android:layout_marginStart="5dp"
+                    android:clickable="false"
+                    android:text="1"
+                    android:textColor="@color/black" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana1Segunda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|end"
+                    android:layout_marginStart="5dp"
+                    android:text="2"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana1Segunda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="10dp"
+
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana1Terca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="3"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana1Terca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/ic_check"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana1Quarta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="4"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana1Quarta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/ic_check"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana1Quinta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="5"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana1Quinta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana1Sexta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="6"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana1Sexta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/ic_check"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="42dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared_gray">
+
+                <TextView
+                    android:id="@+id/tvSemana1Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:clickable="false"
+                    android:text="7"
+                    android:textColor="@color/black" />
+            </FrameLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tr2"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_weight=".3">
+
+            <FrameLayout
+                android:layout_width="42dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared_gray">
+
+                <TextView
+                    android:id="@+id/tvSemana2Domingo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:clickable="false"
+                    android:text="8"
+                    android:textColor="@color/black" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana2Segunda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="9"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana2Segunda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana2Terca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="10"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana2Terca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/ic_check"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana2Quarta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="11"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana2Quarta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana2Quinta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="12"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana2Quinta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana2Sexta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="13"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana2Sexta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/ic_check"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="42dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared_gray">
+
+                <TextView
+                    android:id="@+id/tvSemana2Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:clickable="false"
+                    android:text="14"
+                    android:textColor="@color/black" />
+            </FrameLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tr3"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_weight=".3">
+
+            <FrameLayout
+                android:layout_width="42dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared_gray">
+
+                <TextView
+                    android:id="@+id/tvSemana3Domingo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:clickable="false"
+                    android:text="15"
+                    android:textColor="@color/black" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana3Segunda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="16"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana3Segunda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/ic_check"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana3Terca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="17"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana3Terca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/ic_check"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana3Quarta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="18"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana3Quarta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/ic_check"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana3Quinta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="19"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana3Quinta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/ic_check"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana3Sexta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="20"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana3Sexta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/ic_check"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="42dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared_gray">
+
+                <TextView
+                    android:id="@+id/tvSemana3Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:clickable="false"
+                    android:text="21"
+                    android:textColor="@color/black" />
+            </FrameLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tr4"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_weight=".3">
+
+            <FrameLayout
+                android:layout_width="42dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared_gray">
+
+                <TextView
+                    android:id="@+id/tvSemana4Domingo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:clickable="false"
+                    android:text="22"
+                    android:textColor="@color/black" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana4Segunda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="23"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana4Segunda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/ic_check"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared_yellow">
+
+                <TextView
+                    android:id="@+id/tvSemana4Terca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="24"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana4Terca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/ic_check"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana4Quarta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="25"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvSemana4Quarta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana4Quinta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="26"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana4Quinta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana4Sexta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="27"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana4Sexta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="42dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared_gray">
+
+                <TextView
+                    android:id="@+id/tvSemana4Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:clickable="false"
+                    android:text="28"
+                    android:textColor="@color/black" />
+            </FrameLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tr5"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_weight=".3">
+
+            <FrameLayout
+                android:layout_width="42dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_round_bottom_left_gray">
+
+                <TextView
+                    android:id="@+id/tvSemana5Domingo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:clickable="false"
+                    android:text="29"
+                    android:textColor="@color/black" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana5Segunda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="30"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana5Segunda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/ic_check_void"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana5Terca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:text="31"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana5Terca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana5Quarta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana5Quarta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana5Quinta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana5Quinta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana5Sexta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana5Sexta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="42dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_round_bottom_right_gray">
+
+                <TextView
+                    android:id="@+id/tvSemana5Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:clickable="false"
+                    android:textColor="@color/black" />
+            </FrameLayout>
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/tvMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="@string/mes_fill"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivAnteriorMes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="12dp"
+        android:clickable="true"
+        android:contentDescription="Anterior Mes"
+        android:rotation="180"
+        android:src="@drawable/ic_arrow"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toStartOf="@+id/tvMonth"
+        app:srcCompat="@drawable/ic_arrow" />
+
+    <ImageView
+        android:id="@+id/ivProximoMes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginBottom="12dp"
+        android:clickable="true"
+        android:contentDescription="Proximo Mes"
+        android:src="@drawable/ic_arrow"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintStart_toEndOf="@+id/tvMonth"
+        app:srcCompat="@drawable/ic_arrow" />
+
+    <Button
+        android:id="@+id/btnMarcarPresenca"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:width="160dp"
+        android:height="40dp"
+        android:background="@drawable/ic_button"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/marcar"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#EE5656"
+        android:textColorHint="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
