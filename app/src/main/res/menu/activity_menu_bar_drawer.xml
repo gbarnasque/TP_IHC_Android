@@ -16,5 +16,9 @@
             android:id="@+id/nav_justification"
             android:icon="@drawable/ic_menu_email"
             android:title="@string/menu_justification" />
+        <item
+            android:id="@+id/nav_set_presence"
+            android:icon="@drawable/ic_menu_person_pin_circle"
+            android:title="@string/menu_set_presence" />
     </group>
 </menu>
