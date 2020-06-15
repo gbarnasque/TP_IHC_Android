@@ -60,4 +60,15 @@ public class PresencasSingleton {
         mvetorPresencas[currentDay] = true;
     }
 
+    public String getPresencasSemana(){
+        int presencasSemana = 0;
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+
+        for(int i = (currentDay - dayOfWeek) + 1; i < (currentDay - dayOfWeek) + 7; i++){
+            if(mvetorPresencas[i])
+                presencasSemana++;
+        }
+        return String.valueOf(presencasSemana);
+    }
+
 }

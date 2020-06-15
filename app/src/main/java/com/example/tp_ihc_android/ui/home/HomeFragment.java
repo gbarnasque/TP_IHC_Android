@@ -20,10 +20,13 @@ import com.example.tp_ihc_android.PresencasSingleton;
 import com.example.tp_ihc_android.R;
 import com.example.tp_ihc_android.ui.history.HistoryViewModel;
 
+import org.w3c.dom.Text;
+
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
 
+    TextView numeroPresencas;
     Button marcarPresenca;
 
     private PresencasSingleton presencas;
@@ -35,6 +38,9 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         presencas = PresencasSingleton.getInstance();
+
+        numeroPresencas = root.findViewById(R.id.numero_presencas);
+        numeroPresencas.setText(presencas.getPresencasSemana());
 
         marcarPresenca = root.findViewById(R.id.btnMarcarPresenca);
         marcarPresenca.setOnClickListener(myOnclickListener);
@@ -49,6 +55,7 @@ public class HomeFragment extends Fragment {
                 case R.id.btnMarcarPresenca:
                     showAlertDialogPresencaMarcada(v);
                     presencas.marcarPresenca();
+                    numeroPresencas.setText(presencas.getPresencasSemana());
                     break;
             }
         }

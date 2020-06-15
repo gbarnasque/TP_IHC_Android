@@ -1,5 +1,6 @@
 package com.example.tp_ihc_android;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -38,14 +40,15 @@ public class LoginActivity extends AppCompatActivity {
     String requestBody;
 
     //String teste;
+    private boolean intentToClose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
 
         appContext = this.getApplicationContext();
-
-        setContentView(R.layout.activity_login);
+        intentToClose = false;
 
         etEmail = (EditText)findViewById(R.id.tvEmail);
         etSenha = (EditText)findViewById(R.id.tvSenha);
@@ -105,6 +108,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(etSenha.getText().toString().equals("1111")){
                     showAlertDialogButtonClicked(v);
+
                 }
                 else {
                     changeActivity();
@@ -124,7 +128,27 @@ public class LoginActivity extends AppCompatActivity {
                 */
             }
         });
+    }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        intentToClose = false;
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        if(!intentToClose) {
+            Toast.makeText(appContext, "Pressione voltar novamente para fechar.", Toast.LENGTH_SHORT).show();
+            intentToClose = true;
+        }
+        else {
+            Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+            homeIntent.addCategory(Intent.CATEGORY_HOME);
+            homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(homeIntent);
+        }
     }
 
     private void changeActivity(){

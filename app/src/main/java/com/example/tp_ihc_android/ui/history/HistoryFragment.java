@@ -2,9 +2,15 @@ package com.example.tp_ihc_android.ui.history;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -13,18 +19,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.tp_ihc_android.PresencasSingleton;
 import com.example.tp_ihc_android.R;
-import com.example.tp_ihc_android.ui.home.HomeViewModel;
 
-import org.w3c.dom.Text;
-
-import java.sql.Time;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 public class HistoryFragment extends Fragment {
@@ -41,6 +41,8 @@ public class HistoryFragment extends Fragment {
     View root;
     Button btnMarcarPresenca;
 
+    private float x1,x2;
+    static final int MIN_DISTANCE = 150;
 
     private PresencasSingleton presencas;
 
@@ -72,8 +74,48 @@ public class HistoryFragment extends Fragment {
         changeMonth("current");
         fillCalendarTable();
 
+        final GestureDetector gesture = new GestureDetector(getActivity(),
+                new GestureDetector.SimpleOnGestureListener() {
+
+                    @Override
+                    public boolean onDown(MotionEvent e) {
+                        return true;
+                    }
+
+                    @Override
+                    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+                                           float velocityY) {
+                        final int SWIPE_MIN_DISTANCE = 120;
+                        final int SWIPE_MAX_OFF_PATH = 250;
+                        final int SWIPE_THRESHOLD_VELOCITY = 200;
+                        try {
+                            if (Math.abs(e1.getY() - e2.getY()) > SWIPE_MAX_OFF_PATH)
+                                return false;
+                            if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE
+                                    && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                                changeMonth("next");
+                            } else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE
+                                    && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                                changeMonth("prev");
+                            }
+                        } catch (Exception e) {
+                            // nothing
+                        }
+                        return super.onFling(e1, e2, velocityX, velocityY);
+                    }
+                });
+
+        root.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return gesture.onTouchEvent(event);
+            }
+        });
+
+
         return root;
     }
+
 
     private View.OnClickListener myOnclickListener = new View.OnClickListener(){
         @Override
@@ -167,31 +209,75 @@ public class HistoryFragment extends Fragment {
         };
     }
 
-    private void changeMonth(String command){
+    private void changeMonth(final String command){
+        long animationtime = 125;
+        AnimationSet animations = new AnimationSet(false);
+        Animation translateAnimation;
+        Animation translateAnimation2;
+        Animation translateAnimation3;
+
         if(command.equals("prev")){
             calendar.add(Calendar.MONTH,-1);
+
+            translateAnimation = new TranslateAnimation(0f, 1200f, 0f, 0f);
+            translateAnimation.setDuration(animationtime);
+            animations.addAnimation(translateAnimation);
+
+            translateAnimation2 = new TranslateAnimation(0f, -2400f, 0f, 0f);
+            translateAnimation2.setStartOffset(animationtime);
+            translateAnimation2.setDuration(1);
+            animations.addAnimation(translateAnimation2);
+
+            translateAnimation3 = new TranslateAnimation(0f, 1200f, 0f, 0f);
+            translateAnimation3.setStartOffset(animationtime + 1);
+            translateAnimation3.setDuration(animationtime);
+            animations.addAnimation(translateAnimation3);
+
+            root.findViewById(R.id.tableLayout).startAnimation(animations);
         }
         else if(command.equals("next")){
             calendar.add(Calendar.MONTH,1);
+
+            translateAnimation = new TranslateAnimation(0f, -1200f, 0f, 0f);
+            translateAnimation.setDuration(animationtime);
+            animations.addAnimation(translateAnimation);
+
+            translateAnimation2 = new TranslateAnimation(0f, 2400f, 0f, 0f);
+            translateAnimation2.setStartOffset(animationtime);
+            translateAnimation2.setDuration(1);
+            animations.addAnimation(translateAnimation2);
+
+            translateAnimation3 = new TranslateAnimation(0f, -1200f, 0f, 0f);
+            translateAnimation3.setStartOffset(animationtime + 1);
+            translateAnimation3.setDuration(animationtime);
+            animations.addAnimation(translateAnimation3);
+
+            root.findViewById(R.id.tableLayout).startAnimation(animations);
         }
 
-        final Locale myLocale = new Locale("pt", "BR");
-        month = "";
-        month = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, myLocale);
-        String textToTvMonth = month.substring(0, 1).toUpperCase() + month.substring(1).toLowerCase() + "/" + calendar.get(Calendar.YEAR);
-        tvMonth.setText(textToTvMonth);
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                final Locale myLocale = new Locale("pt", "BR");
+                month = "";
+                month = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, myLocale);
+                String textToTvMonth = month.substring(0, 1).toUpperCase() + month.substring(1).toLowerCase() + "/" + calendar.get(Calendar.YEAR);
+                tvMonth.setText(textToTvMonth);
 
-        if(!command.equals("current")) {
-            clearCalendarTable();
-            if (currentMonth == calendar.get(Calendar.MONTH)){
-                btnMarcarPresenca.setOnClickListener(myOnclickListener);
-                fillCalendarTable();
+                if(!command.equals("current")) {
+                    clearCalendarTable();
+                    if (currentMonth == calendar.get(Calendar.MONTH)){
+                        btnMarcarPresenca.setOnClickListener(myOnclickListener);
+                        fillCalendarTable();
+                    }
+                    else {
+                        btnMarcarPresenca.setOnClickListener(disabledButton);
+                        updateCalendarTable();
+                    }
+                }
             }
-            else {
-                btnMarcarPresenca.setOnClickListener(disabledButton);
-                updateCalendarTable();
-            }
-        }
+        }, animationtime);
     }
 
     private void fillCalendarTable(){
