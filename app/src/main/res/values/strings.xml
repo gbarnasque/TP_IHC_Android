@@ -45,5 +45,9 @@
     <string name="mes_fill">Dezembro/2020</string>
 
     <string name="presenca_marcada">Sua presença foi marcada com sucesso!</string>
+    <string name="presenca_ja_marcada">Você já possui presença hoje!</string>
+    <string name="presenca_mes_errado">Não é possível marcar a presença sem estar no mês atual.</string>
     <string name="fechar">Fechar</string>
+    <string name="proximo_mes">Proximo Mes</string>
+    <string name="anterior_mes">Mes Anterior</string>
 </resources>

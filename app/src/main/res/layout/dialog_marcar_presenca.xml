@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
-    android:layout_height="120dp"
+    android:layout_height="140dp"
     android:background="@drawable/ic_border_squared">
 
     <ImageView
         android:id="@+id/ImageView01"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
@@ -21,13 +22,13 @@
     <TextView
         android:id="@+id/TextView01"
         android:layout_width="232dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center_vertical|end"
+        android:layout_height="60dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="@string/presenca_marcada"
+        android:gravity="center_vertical"
+        android:text="@string/presenca_mes_errado"
         android:textAppearance="@style/title2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

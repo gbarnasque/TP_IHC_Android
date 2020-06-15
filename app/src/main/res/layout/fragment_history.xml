@@ -1051,13 +1051,15 @@
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"
         android:layout_marginBottom="12dp"
+        android:focusable="true"
         android:clickable="true"
-        android:contentDescription="Anterior Mes"
+        android:contentDescription="@string/anterior_mes"
         android:rotation="180"
         android:src="@drawable/ic_arrow"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_arrow" />
+        app:srcCompat="@drawable/ic_arrow"
+        />
 
     <ImageView
         android:id="@+id/ivProximoMes"
@@ -1067,11 +1069,13 @@
         android:layout_marginRight="48dp"
         android:layout_marginBottom="12dp"
         android:clickable="true"
-        android:contentDescription="Proximo Mes"
+        android:focusable="true"
+        android:contentDescription="@string/proximo_mes"
         android:src="@drawable/ic_arrow"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_arrow" />
+        app:srcCompat="@drawable/ic_arrow"
+         />
 
     <Button
         android:id="@+id/btnMarcarPresenca"

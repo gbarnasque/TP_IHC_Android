@@ -16,7 +16,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.tp_ihc_android.PresencasSingleton;
 import com.example.tp_ihc_android.R;
+import com.example.tp_ihc_android.ui.home.HomeViewModel;
 
 import org.w3c.dom.Text;
 
@@ -37,8 +39,10 @@ public class HistoryFragment extends Fragment {
     private Calendar calendar;
 
     View root;
-
     Button btnMarcarPresenca;
+
+
+    private PresencasSingleton presencas;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -49,12 +53,8 @@ public class HistoryFragment extends Fragment {
                 ViewModelProviders.of(this).get(HistoryViewModel.class);
         root = inflater.inflate(R.layout.fragment_history, container, false);
         //final TextView textView = root.findViewById(R.id.text_gallery);
-        historyViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                //textView.setText(s);
-            }
-        });
+
+        presencas = PresencasSingleton.getInstance();
 
         btnMarcarPresenca = root.findViewById(R.id.btnMarcarPresenca);
         btnMarcarPresenca.setOnClickListener(myOnclickListener);
@@ -87,17 +87,59 @@ public class HistoryFragment extends Fragment {
                     break;
                 case R.id.btnMarcarPresenca:
                     showAlertDialogPresencaMarcada(v);
-                    checkDay();
+                    presencas.marcarPresenca();
+                    fillCalendarTable();
                     break;
             }
         }
     };
+
+    private View.OnClickListener disabledButton = new View.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.btnMarcarPresenca:
+                    showAlertDialogNaoPossivelMarcarPresenca(v);
+                    break;
+            }
+        }
+    };
+
 
     public void showAlertDialogPresencaMarcada(View view) {
         final Dialog dialog = new Dialog(this.getContext());
         dialog.setContentView(R.layout.dialog_marcar_presenca);
 
         Button button = (Button) dialog.findViewById(R.id.btnCloseDialog);
+        TextView tv = (TextView) dialog.findViewById(R.id.TextView01);
+        tv.setTextColor(getResources().getColor(R.color.green));
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        if(presencas.getPresenca(presencas.getCurrentDay())){
+            tv.setText(R.string.presenca_ja_marcada);
+        }
+        else{
+            tv.setText(R.string.presenca_marcada);
+        }
+        dialog.show();
+    }
+
+    public void showAlertDialogNaoPossivelMarcarPresenca(View view) {
+        final Dialog dialog = new Dialog(this.getContext());
+        dialog.setContentView(R.layout.dialog_marcar_presenca);
+
+        Button button = (Button) dialog.findViewById(R.id.btnCloseDialog);
+        ImageView iv = (ImageView) dialog.findViewById(R.id.ImageView01);
+        iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_close_24));
+        TextView tv = (TextView) dialog.findViewById(R.id.TextView01);
+        tv.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+        tv.setText(R.string.presenca_mes_errado);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,8 +150,21 @@ public class HistoryFragment extends Fragment {
     }
 
     private void checkDay(){
-        View cDay = root.findViewWithTag("currentDay");
-        cDay.setBackground(getResources().getDrawable(R.drawable.ic_check));
+        if(calendar.get(Calendar.MONTH) == currentMonth) {
+            View cDay = root.findViewWithTag("currentDay");
+            if (cDay != null) {
+                cDay.setBackground(getResources().getDrawable(R.drawable.ic_check));
+            }
+            clearTags();
+        }
+    }
+
+    private void clearTags(){
+        View dummy = root.findViewWithTag("currentDay");
+        while(dummy != null){
+            dummy.setTag("");
+            dummy = root.findViewWithTag("currentDay");
+        };
     }
 
     private void changeMonth(String command){
@@ -128,10 +183,14 @@ public class HistoryFragment extends Fragment {
 
         if(!command.equals("current")) {
             clearCalendarTable();
-            if (currentMonth == calendar.get(Calendar.MONTH))
+            if (currentMonth == calendar.get(Calendar.MONTH)){
+                btnMarcarPresenca.setOnClickListener(myOnclickListener);
                 fillCalendarTable();
-            else
+            }
+            else {
+                btnMarcarPresenca.setOnClickListener(disabledButton);
                 updateCalendarTable();
+            }
         }
     }
 
@@ -150,18 +209,21 @@ public class HistoryFragment extends Fragment {
             if(i < calendar.get(Calendar.DAY_OF_WEEK)-1) continue;
             View child = row.getChildAt(i);
             if(child instanceof FrameLayout){
-                if(currentDay == dayOfMonth && !isWeekend){
-                    child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                if(!isWeekend) {
                     View cDay = ((FrameLayout) child).getChildAt(1);
-                    cDay.setTag("currentDay");
-
+                    if (currentDay == dayOfMonth) {
+                        child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                        cDay.setTag("currentDay");
+                    }
+                    if(presencas.getPresenca(dayOfMonth))
+                        cDay.setBackground(getResources().getDrawable(R.drawable.ic_check));
                 }
                 View day = ((FrameLayout) child).getChildAt(0);
                 if(day instanceof TextView){
                     ((TextView) day).setText(String.valueOf(dayOfMonth));
                     dayOfMonth++;
-
                 }
+
             }
         }
 
@@ -169,10 +231,14 @@ public class HistoryFragment extends Fragment {
         for(int i=0; i<row.getChildCount(); i++){
             View child = row.getChildAt(i);
             if(child instanceof FrameLayout){
-                if(currentDay == dayOfMonth && !isWeekend){
-                    child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                if(!isWeekend) {
                     View cDay = ((FrameLayout) child).getChildAt(1);
-                    cDay.setTag("currentDay");
+                    if (currentDay == dayOfMonth) {
+                        child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                        cDay.setTag("currentDay");
+                    }
+                    if(presencas.getPresenca(dayOfMonth))
+                        cDay.setBackground(getResources().getDrawable(R.drawable.ic_check));
                 }
                 View day = ((FrameLayout) child).getChildAt(0);
                 if(day instanceof TextView){
@@ -185,10 +251,14 @@ public class HistoryFragment extends Fragment {
         for(int i=0; i<row.getChildCount(); i++){
             View child = row.getChildAt(i);
             if(child instanceof FrameLayout){
-                if(currentDay == dayOfMonth && !isWeekend){
-                    child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                if(!isWeekend) {
                     View cDay = ((FrameLayout) child).getChildAt(1);
-                    cDay.setTag("currentDay");
+                    if (currentDay == dayOfMonth) {
+                        child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                        cDay.setTag("currentDay");
+                    }
+                    if(presencas.getPresenca(dayOfMonth))
+                        cDay.setBackground(getResources().getDrawable(R.drawable.ic_check));
                 }
                 View day = ((FrameLayout) child).getChildAt(0);
                 if(day instanceof TextView){
@@ -203,10 +273,14 @@ public class HistoryFragment extends Fragment {
             if(dayOfMonth > maximumDays) continue;
             View child = row.getChildAt(i);
             if(child instanceof FrameLayout){
-                if(currentDay == dayOfMonth && !isWeekend){
-                    child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                if(!isWeekend) {
                     View cDay = ((FrameLayout) child).getChildAt(1);
-                    cDay.setTag("currentDay");
+                    if (currentDay == dayOfMonth) {
+                        child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                        cDay.setTag("currentDay");
+                    }
+                    if(presencas.getPresenca(dayOfMonth))
+                        cDay.setBackground(getResources().getDrawable(R.drawable.ic_check));
                 }
                 View day = ((FrameLayout) child).getChildAt(0);
                 if(day instanceof TextView){
@@ -222,10 +296,14 @@ public class HistoryFragment extends Fragment {
             //if(i < calendar.get(Calendar.DAY_OF_WEEK)-1) continue;
             View child = row.getChildAt(i);
             if(child instanceof FrameLayout){
-                if(currentDay == dayOfMonth && !isWeekend){
-                    child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                if(!isWeekend) {
                     View cDay = ((FrameLayout) child).getChildAt(1);
-                    cDay.setTag("currentDay");
+                    if (currentDay == dayOfMonth) {
+                        child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                        cDay.setTag("currentDay");
+                    }
+                    if(presencas.getPresenca(dayOfMonth))
+                        cDay.setBackground(getResources().getDrawable(R.drawable.ic_check));
                 }
                 View day = ((FrameLayout) child).getChildAt(0);
                 if(day instanceof TextView){
@@ -240,10 +318,14 @@ public class HistoryFragment extends Fragment {
             if(dayOfMonth > maximumDays) continue;
             View child = row.getChildAt(i);
             if(child instanceof FrameLayout){
-                if(currentDay == dayOfMonth && !isWeekend){
-                    child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                if(!isWeekend) {
                     View cDay = ((FrameLayout) child).getChildAt(1);
-                    cDay.setTag("currentDay");
+                    if (currentDay == dayOfMonth) {
+                        child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                        cDay.setTag("currentDay");
+                    }
+                    if(presencas.getPresenca(dayOfMonth))
+                        cDay.setBackground(getResources().getDrawable(R.drawable.ic_check));
                 }
                 View day = ((FrameLayout) child).getChildAt(0);
                 if(day instanceof TextView){
