@@ -1,9 +1,11 @@
 package com.example.tp_ihc_android.ui.history;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +38,8 @@ public class HistoryFragment extends Fragment {
 
     View root;
 
+    Button btnMarcarPresenca;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -52,13 +56,15 @@ public class HistoryFragment extends Fragment {
             }
         });
 
+        btnMarcarPresenca = root.findViewById(R.id.btnMarcarPresenca);
+        btnMarcarPresenca.setOnClickListener(myOnclickListener);
 
         tvMonth = root.findViewById(R.id.tvMonth);
 
         ivProximoMes = root.findViewById(R.id.ivProximoMes);
-        ivProximoMes.setOnClickListener(prevNextListener);
+        ivProximoMes.setOnClickListener(myOnclickListener);
         ivAnteriorMes = root.findViewById(R.id.ivAnteriorMes);
-        ivAnteriorMes.setOnClickListener(prevNextListener);
+        ivAnteriorMes.setOnClickListener(myOnclickListener);
 
         currentDay = calendar.get(Calendar.DAY_OF_MONTH);
         currentMonth = calendar.get(Calendar.MONTH);
@@ -69,6 +75,42 @@ public class HistoryFragment extends Fragment {
         return root;
     }
 
+    private View.OnClickListener myOnclickListener = new View.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.ivAnteriorMes:
+                    changeMonth("prev");
+                    break;
+                case R.id.ivProximoMes:
+                    changeMonth("next");
+                    break;
+                case R.id.btnMarcarPresenca:
+                    showAlertDialogPresencaMarcada(v);
+                    checkDay();
+                    break;
+            }
+        }
+    };
+
+    public void showAlertDialogPresencaMarcada(View view) {
+        final Dialog dialog = new Dialog(this.getContext());
+        dialog.setContentView(R.layout.dialog_marcar_presenca);
+
+        Button button = (Button) dialog.findViewById(R.id.btnCloseDialog);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    private void checkDay(){
+        View cDay = root.findViewWithTag("currentDay");
+        cDay.setBackground(getResources().getDrawable(R.drawable.ic_check));
+    }
 
     private void changeMonth(String command){
         if(command.equals("prev")){
@@ -110,6 +152,9 @@ public class HistoryFragment extends Fragment {
             if(child instanceof FrameLayout){
                 if(currentDay == dayOfMonth && !isWeekend){
                     child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                    View cDay = ((FrameLayout) child).getChildAt(1);
+                    cDay.setTag("currentDay");
+
                 }
                 View day = ((FrameLayout) child).getChildAt(0);
                 if(day instanceof TextView){
@@ -126,6 +171,8 @@ public class HistoryFragment extends Fragment {
             if(child instanceof FrameLayout){
                 if(currentDay == dayOfMonth && !isWeekend){
                     child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                    View cDay = ((FrameLayout) child).getChildAt(1);
+                    cDay.setTag("currentDay");
                 }
                 View day = ((FrameLayout) child).getChildAt(0);
                 if(day instanceof TextView){
@@ -140,6 +187,8 @@ public class HistoryFragment extends Fragment {
             if(child instanceof FrameLayout){
                 if(currentDay == dayOfMonth && !isWeekend){
                     child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                    View cDay = ((FrameLayout) child).getChildAt(1);
+                    cDay.setTag("currentDay");
                 }
                 View day = ((FrameLayout) child).getChildAt(0);
                 if(day instanceof TextView){
@@ -156,6 +205,8 @@ public class HistoryFragment extends Fragment {
             if(child instanceof FrameLayout){
                 if(currentDay == dayOfMonth && !isWeekend){
                     child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                    View cDay = ((FrameLayout) child).getChildAt(1);
+                    cDay.setTag("currentDay");
                 }
                 View day = ((FrameLayout) child).getChildAt(0);
                 if(day instanceof TextView){
@@ -173,6 +224,8 @@ public class HistoryFragment extends Fragment {
             if(child instanceof FrameLayout){
                 if(currentDay == dayOfMonth && !isWeekend){
                     child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                    View cDay = ((FrameLayout) child).getChildAt(1);
+                    cDay.setTag("currentDay");
                 }
                 View day = ((FrameLayout) child).getChildAt(0);
                 if(day instanceof TextView){
@@ -189,6 +242,8 @@ public class HistoryFragment extends Fragment {
             if(child instanceof FrameLayout){
                 if(currentDay == dayOfMonth && !isWeekend){
                     child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
+                    View cDay = ((FrameLayout) child).getChildAt(1);
+                    cDay.setTag("currentDay");
                 }
                 View day = ((FrameLayout) child).getChildAt(0);
                 if(day instanceof TextView){
@@ -298,21 +353,6 @@ public class HistoryFragment extends Fragment {
             }
         }
     }
-
-    private View.OnClickListener prevNextListener = new View.OnClickListener(){
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.ivAnteriorMes:
-                    changeMonth("prev");
-                    break;
-                case R.id.ivProximoMes:
-                    changeMonth("next");
-                    break;
-            }
-        }
-    };
-
 
     private void clearCalendarTable(){
         calendar.set(Calendar.DAY_OF_MONTH, 1);
