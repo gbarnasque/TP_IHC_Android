@@ -141,9 +141,7 @@ public class LoginActivity extends AppCompatActivity {
         builder.setTitle("Não foi possível realizar o login.");
         builder.setMessage("Por gentileza, tente novamente.");
 
-
         builder.setPositiveButton("Tentar Novamente", null);
-
 
         AlertDialog dialog = builder.create();
         dialog.show();
