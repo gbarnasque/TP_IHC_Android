@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
         appContext = this.getApplicationContext();
 
-        setContentView(R.layout.activity_login2);
+        setContentView(R.layout.activity_login);
 
         etEmail = (EditText)findViewById(R.id.tvEmail);
         etSenha = (EditText)findViewById(R.id.tvSenha);

@@ -43,4 +43,7 @@
     <string name="tabela_Q">Q</string>
 
     <string name="mes_fill">Dezembro/2020</string>
+
+    <string name="presenca_marcada">Sua presença foi marcada com sucesso!</string>
+    <string name="fechar">Fechar</string>
 </resources>

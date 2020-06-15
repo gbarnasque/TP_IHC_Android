@@ -22,11 +22,10 @@
         android:layout_width="348dp"
         android:layout_height="400dp"
 
-        app:layout_constraintBottom_toTopOf="@+id/background"
+        app:layout_constraintBottom_toTopOf="@+id/btnMarcarPresenca"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65999997">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
             android:id="@+id/th"
@@ -130,7 +129,6 @@
                     android:layout_gravity="start|end"
                     android:layout_marginStart="5dp"
                     android:clickable="false"
-                    android:text="1"
                     android:textColor="@color/black" />
             </FrameLayout>
 
@@ -145,7 +143,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start|end"
                     android:layout_marginStart="5dp"
-                    android:text="2"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -155,7 +152,7 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="10dp"
-
+                    android:background="@drawable/ic_check_void"
                     android:clickable="false" />
             </FrameLayout>
 
@@ -170,7 +167,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="3"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -180,7 +176,6 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/ic_check"
                     android:clickable="false" />
             </FrameLayout>
 
@@ -195,7 +190,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="4"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -205,7 +199,6 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/ic_check"
                     android:clickable="false" />
             </FrameLayout>
 
@@ -220,7 +213,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="5"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -244,7 +236,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="6"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -254,7 +245,6 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/ic_check"
                     android:clickable="false" />
             </FrameLayout>
 
@@ -270,7 +260,6 @@
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
                     android:clickable="false"
-                    android:text="7"
                     android:textColor="@color/black" />
             </FrameLayout>
         </TableRow>
@@ -293,7 +282,6 @@
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
                     android:clickable="false"
-                    android:text="8"
                     android:textColor="@color/black" />
             </FrameLayout>
 
@@ -308,7 +296,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="9"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -318,6 +305,7 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
+                    android:background="@drawable/ic_check_void"
                     android:clickable="false" />
             </FrameLayout>
 
@@ -332,7 +320,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="10"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -342,7 +329,6 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/ic_check"
                     android:clickable="false" />
             </FrameLayout>
 
@@ -357,7 +343,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="11"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -382,7 +367,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="12"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -406,7 +390,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="13"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -416,7 +399,6 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/ic_check"
                     android:clickable="false" />
             </FrameLayout>
 
@@ -432,7 +414,6 @@
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
                     android:clickable="false"
-                    android:text="14"
                     android:textColor="@color/black" />
             </FrameLayout>
         </TableRow>
@@ -455,7 +436,6 @@
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
                     android:clickable="false"
-                    android:text="15"
                     android:textColor="@color/black" />
             </FrameLayout>
 
@@ -470,7 +450,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="16"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -480,7 +459,7 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/ic_check"
+                    android:background="@drawable/ic_check_void"
                     android:clickable="false" />
             </FrameLayout>
 
@@ -495,7 +474,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="17"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -505,7 +483,6 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/ic_check"
                     android:clickable="false" />
             </FrameLayout>
 
@@ -520,7 +497,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="18"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -530,7 +506,6 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/ic_check"
                     android:clickable="false" />
             </FrameLayout>
 
@@ -545,7 +520,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="19"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -555,7 +529,6 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/ic_check"
                     android:clickable="false" />
             </FrameLayout>
 
@@ -570,7 +543,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="20"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -580,7 +552,6 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/ic_check"
                     android:clickable="false" />
             </FrameLayout>
 
@@ -596,7 +567,6 @@
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
                     android:clickable="false"
-                    android:text="21"
                     android:textColor="@color/black" />
             </FrameLayout>
         </TableRow>
@@ -619,7 +589,6 @@
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
                     android:clickable="false"
-                    android:text="22"
                     android:textColor="@color/black" />
             </FrameLayout>
 
@@ -634,7 +603,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="23"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -644,14 +612,14 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/ic_check"
+                    android:background="@drawable/ic_check_void"
                     android:clickable="false" />
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="53dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/ic_border_squared_yellow">
+                android:background="@drawable/ic_border_squared">
 
                 <TextView
                     android:id="@+id/tvSemana4Terca"
@@ -659,7 +627,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="24"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -669,7 +636,6 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/ic_check"
                     android:clickable="false" />
             </FrameLayout>
 
@@ -684,7 +650,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="25"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -708,7 +673,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="26"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -732,7 +696,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="27"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -757,7 +720,6 @@
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
                     android:clickable="false"
-                    android:text="28"
                     android:textColor="@color/black" />
             </FrameLayout>
         </TableRow>
@@ -771,7 +733,7 @@
             <FrameLayout
                 android:layout_width="42dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/ic_border_round_bottom_left_gray">
+                android:background="@drawable/ic_border_squared_gray">
 
                 <TextView
                     android:id="@+id/tvSemana5Domingo"
@@ -780,7 +742,6 @@
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
                     android:clickable="false"
-                    android:text="29"
                     android:textColor="@color/black" />
             </FrameLayout>
 
@@ -795,7 +756,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="30"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -820,7 +780,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginStart="5dp"
-                    android:text="31"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -905,10 +864,163 @@
             <FrameLayout
                 android:layout_width="42dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/ic_border_round_bottom_right_gray">
+                android:background="@drawable/ic_border_squared_gray">
 
                 <TextView
                     android:id="@+id/tvSemana5Sabado"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:clickable="false"
+                    android:textColor="@color/black" />
+            </FrameLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tr6"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_weight=".3">
+
+            <FrameLayout
+                android:layout_width="42dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_round_bottom_left_gray">
+
+                <TextView
+                    android:id="@+id/tvSemana6Domingo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:clickable="false"
+                    android:textColor="@color/black" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana6Segunda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana6Segunda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/ic_check_void"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana6Terca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana6Terca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana6Quarta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana6Quarta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana6Quinta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana6Quinta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_squared">
+
+                <TextView
+                    android:id="@+id/tvSemana6Sexta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvPresencaSemana6Sexta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="false" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="42dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_border_round_bottom_right_gray">
+
+                <TextView
+                    android:id="@+id/tvSemana6Sabado"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="top|start"
@@ -936,29 +1048,29 @@
         android:id="@+id/ivAnteriorMes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
         android:layout_marginBottom="12dp"
         android:clickable="true"
         android:contentDescription="Anterior Mes"
         android:rotation="180"
         android:src="@drawable/ic_arrow"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
-        app:layout_constraintEnd_toStartOf="@+id/tvMonth"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_arrow" />
 
     <ImageView
         android:id="@+id/ivProximoMes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
         android:layout_marginBottom="12dp"
         android:clickable="true"
         android:contentDescription="Proximo Mes"
         android:src="@drawable/ic_arrow"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
-        app:layout_constraintStart_toEndOf="@+id/tvMonth"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_arrow" />
 
     <Button
@@ -973,7 +1085,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#EE5656"
         android:textColorHint="#000000"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias=".5"

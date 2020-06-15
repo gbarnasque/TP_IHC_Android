@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <!-- Background -->
 
     <!-- Presenças -->
     <View
@@ -20,6 +19,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
+    <!-- Numero de presenças -->
+
     <View
         android:id="@+id/presencas"
         android:layout_width="100dp"
@@ -27,13 +28,13 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="220dp"
         android:background="#00000000"
+        app:layout_constraintBottom_toTopOf="@+id/btnMarcarPresenca"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Numero de presenças -->
     <TextView
         android:id="@+id/numero_presencas"
         android:layout_width="100dp"
@@ -63,25 +64,24 @@
         app:layout_constraintTop_toBottomOf="@+id/numero_presencas"
         />
 
-    <!-- Marcar presença -->
-    <View
-        android:id="@+id/rectangle_button"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="80dp"
-        android:background="@drawable/rectangle_button"
-        app:layout_constraintBottom_toBottomOf="@+id/background"
-        app:layout_constraintEnd_toEndOf="@+id/background"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/marcar_pres"
+    <Button
+        android:id="@+id/btnMarcarPresenca"
         android:layout_width="160dp"
         android:layout_height="40dp"
-        android:gravity="center_horizontal|center_vertical"
+        android:width="160dp"
+        android:height="40dp"
+        android:background="@drawable/ic_button"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/marcar"
-        android:textAppearance="@style/title2"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="@+id/rectangle_button"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_button" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#EE5656"
+        android:textColorHint="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

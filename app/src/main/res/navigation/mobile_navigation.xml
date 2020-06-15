@@ -17,11 +17,6 @@
         tools:layout="@layout/fragment_history" />
 
     <fragment
-        android:id="@+id/nav_justification"
-        android:name="com.example.tp_ihc_android.ui.justification.JustificationFragment"
-        tools:layout="@layout/fragment_justification" />
-
-    <fragment
         android:id="@+id/nav_set_presence"
         android:name="com.example.tp_ihc_android.ui.presence.SetPresence"
         tools:layout="@layout/set_presence_fragment" />
