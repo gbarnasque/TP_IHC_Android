@@ -128,8 +128,14 @@ public class HistoryFragment extends Fragment {
                     changeMonth("next");
                     break;
                 case R.id.btnMarcarPresenca:
-                    showAlertDialogPresencaMarcada(v);
-                    presencas.marcarPresenca();
+                    if(presencas.presencaMarcadaHoje())
+                        showAlertDialogPresencaMarcada(v, R.string.presenca_ja_marcada);
+                    else{
+                        if(presencas.marcarPresenca())
+                            showAlertDialogPresencaMarcada(v, R.string.presenca_marcada);
+                        else
+                            showAlertDialogNaoPossivelMarcarPresenca(v, R.string.presenca_final_de_semana);
+                    }
                     fillCalendarTable();
                     break;
             }
@@ -141,14 +147,14 @@ public class HistoryFragment extends Fragment {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.btnMarcarPresenca:
-                    showAlertDialogNaoPossivelMarcarPresenca(v);
+                    showAlertDialogNaoPossivelMarcarPresenca(v, R.string.presenca_mes_errado);
                     break;
             }
         }
     };
 
 
-    public void showAlertDialogPresencaMarcada(View view) {
+    public void showAlertDialogPresencaMarcada(View view, int stringToShow) {
         final Dialog dialog = new Dialog(this.getContext());
         dialog.setContentView(R.layout.dialog_marcar_presenca);
 
@@ -162,16 +168,11 @@ public class HistoryFragment extends Fragment {
             }
         });
 
-        if(presencas.getPresenca(presencas.getCurrentDay())){
-            tv.setText(R.string.presenca_ja_marcada);
-        }
-        else{
-            tv.setText(R.string.presenca_marcada);
-        }
+        tv.setText(stringToShow);
         dialog.show();
     }
 
-    public void showAlertDialogNaoPossivelMarcarPresenca(View view) {
+    public void showAlertDialogNaoPossivelMarcarPresenca(View view, int stringToShow) {
         final Dialog dialog = new Dialog(this.getContext());
         dialog.setContentView(R.layout.dialog_marcar_presenca);
 
@@ -181,7 +182,7 @@ public class HistoryFragment extends Fragment {
         TextView tv = (TextView) dialog.findViewById(R.id.TextView01);
         tv.setTextColor(getResources().getColor(R.color.colorPrimary));
 
-        tv.setText(R.string.presenca_mes_errado);
+        tv.setText(stringToShow);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

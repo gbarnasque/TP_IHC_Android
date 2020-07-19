@@ -47,7 +47,14 @@
     <string name="presenca_marcada">Sua presença foi marcada com sucesso!</string>
     <string name="presenca_ja_marcada">Você já possui presença hoje!</string>
     <string name="presenca_mes_errado">Não é possível marcar a presença sem estar no mês atual.</string>
+    <string name="presenca_final_de_semana">Não é possível marcar presença no final de semana.</string>
     <string name="fechar">Fechar</string>
     <string name="proximo_mes">Proximo Mes</string>
     <string name="anterior_mes">Mes Anterior</string>
+
+    <string name="email_nao_preenchido">Por gentileza, entre com seu email.</string>
+    <string name="senha_nao_preenchida">Por gentileza, entre com sua senha.</string>
+    <string name="email_invalido">Entre com um email válido.</string>
+    <string name="senha_invalido">Preencha o campo senha.</string>
+    <string name="login_invalido">Não foi possível realizar o login. Verifique as informações.</string>
 </resources>

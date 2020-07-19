@@ -2,6 +2,7 @@ package com.example.tp_ihc_android;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -16,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 public class MenuBar extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private UserSingleton user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,7 @@ public class MenuBar extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(null);
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -36,12 +39,18 @@ public class MenuBar extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        user = UserSingleton.getInstance(this);
+
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_bar, menu);
+        TextView tvEmailMenuBar = findViewById(R.id.tvEmailMenuBar);
+        tvEmailMenuBar.setText(user.getEmail());
         return true;
     }
 

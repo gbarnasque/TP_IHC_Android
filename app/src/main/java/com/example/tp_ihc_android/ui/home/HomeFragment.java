@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -53,15 +54,23 @@ public class HomeFragment extends Fragment {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.btnMarcarPresenca:
-                    showAlertDialogPresencaMarcada(v);
-                    presencas.marcarPresenca();
+                    if(presencas.presencaMarcadaHoje())
+                        showAlertDialogPresencaMarcada(v, R.string.presenca_ja_marcada);
+                    else{
+                        if(presencas.marcarPresenca())
+                            showAlertDialogPresencaMarcada(v, R.string.presenca_marcada);
+                        else
+                            showAlertDialogNaoPossivelMarcarPresenca(v, R.string.presenca_final_de_semana);
+                    }
+
+
                     numeroPresencas.setText(presencas.getPresencasSemana());
                     break;
             }
         }
     };
 
-    public void showAlertDialogPresencaMarcada(View view) {
+    public void showAlertDialogPresencaMarcada(View view, int stringToShow) {
         final Dialog dialog = new Dialog(this.getContext());
         dialog.setContentView(R.layout.dialog_marcar_presenca);
 
@@ -75,12 +84,27 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        if(presencas.getPresenca(presencas.getCurrentDay())){
-            tv.setText(R.string.presenca_ja_marcada);
-        }
-        else{
-            tv.setText(R.string.presenca_marcada);
-        }
+        tv.setText(stringToShow);
+        dialog.show();
+    }
+
+    public void showAlertDialogNaoPossivelMarcarPresenca(View view, int stringToShow) {
+        final Dialog dialog = new Dialog(this.getContext());
+        dialog.setContentView(R.layout.dialog_marcar_presenca);
+
+        Button button = (Button) dialog.findViewById(R.id.btnCloseDialog);
+        ImageView iv = (ImageView) dialog.findViewById(R.id.ImageView01);
+        iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_close_24));
+        TextView tv = (TextView) dialog.findViewById(R.id.TextView01);
+        tv.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+        tv.setText(stringToShow);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
         dialog.show();
     }
 }

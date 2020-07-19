@@ -24,13 +24,15 @@ public class PresencasSingleton {
         for (int i = 0; i < 32; i++) {
             mvetorPresencas[i] = false;
         }
+        /*
         mvetorPresencas[2] = true;
         mvetorPresencas[3] = true;
         mvetorPresencas[4] = true;
         mvetorPresencas[10] = true;
         mvetorPresencas[11] = true;
         mvetorPresencas[12] = true;
-        //mvetorPresencas[15] = true;
+        mvetorPresencas[15] = true;
+         */
     }
 
     public static synchronized PresencasSingleton getInstance() {
@@ -56,8 +58,15 @@ public class PresencasSingleton {
         return currentMonth;
     }
 
-    public void marcarPresenca(){
-        mvetorPresencas[currentDay] = true;
+    public boolean marcarPresenca(){
+        boolean isWeekend = isWeekend();
+
+        mvetorPresencas[currentDay] = !isWeekend;
+        return !isWeekend;
+    }
+
+    public boolean presencaMarcadaHoje(){
+        return mvetorPresencas[currentDay];
     }
 
     public String getPresencasSemana(){
@@ -70,5 +79,9 @@ public class PresencasSingleton {
         }
         return String.valueOf(presencasSemana);
     }
+
+    private boolean isWeekend(){
+        return (calendar.get(Calendar.DAY_OF_WEEK) == calendar.SUNDAY) || (calendar.get(Calendar.DAY_OF_WEEK) == calendar.SATURDAY);
+     }
 
 }

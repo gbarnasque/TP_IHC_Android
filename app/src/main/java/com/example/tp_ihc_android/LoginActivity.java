@@ -4,6 +4,7 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,7 @@ import java.io.UnsupportedEncodingException;
 public class LoginActivity extends AppCompatActivity {
 
     Context appContext;
+    private UserSingleton user;
 
     EditText etEmail;
     EditText etSenha;
@@ -48,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         appContext = this.getApplicationContext();
+        user = UserSingleton.getInstance(appContext);
         intentToClose = false;
 
         etEmail = (EditText)findViewById(R.id.tvEmail);
@@ -106,11 +110,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(etSenha.getText().toString().equals("1111")){
-                    showAlertDialogButtonClicked(v);
-
-                }
-                else {
+                if(fieldsValidated(v)){
                     changeActivity();
                 }
                 /*
@@ -151,19 +151,45 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+
+    private boolean fieldsValidated(View v){
+        boolean ret = false;
+        if (!isEmailFilled()) {
+            showAlertDialog(v, R.string.email_nao_preenchido);
+        }
+        else if(!isSenhaFilled()){
+            showAlertDialog(v, R.string.senha_nao_preenchida);
+        }
+        else if(!isEmailValid()){
+            showAlertDialog(v, R.string.email_invalido);
+        }
+        else{
+            user.setEmail(etEmail.getText().toString());
+            ret = true;
+        }
+        return ret;
+    }
+
     private void changeActivity(){
         Intent intent = new Intent(this, MenuBar.class);
         startActivity(intent);
     }
 
-    private void checkPassword(){
-
+    private boolean isEmailFilled(){
+        return !etEmail.getText().toString().equals("");
     }
-    public void showAlertDialogButtonClicked(View view) {
+    private boolean isEmailValid(){
+        return etEmail.getText().toString().contains("@");
+    }
+    private boolean isSenhaFilled(){
+        return !etSenha.getText().toString().equals("");
+    }
+
+    public void showAlertDialog(View view, int messageToShow) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Não foi possível realizar o login.");
-        builder.setMessage("Por gentileza, tente novamente.");
+        builder.setMessage(messageToShow);
 
         builder.setPositiveButton("Tentar Novamente", null);
 
@@ -171,8 +197,4 @@ public class LoginActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    //public String getEmail(){
-        //String texto = email.getText(;
-
-    //}
 }
