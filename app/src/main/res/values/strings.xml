@@ -27,8 +27,8 @@
     <string name="title_activity_menu_bar">MenuBar</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">João</string>
-    <string name="nav_header_subtitle">joao@ufrgs.br</string>
+    <string name="nav_header_title">-</string>
+    <string name="nav_header_subtitle">-</string>
     <string name="nav_header_desc">Navigation header</string>
 
     <string name="menu_home">Home</string>

@@ -1,8 +1,11 @@
 package com.example.tp_ihc_android;
 
+import android.util.Log;
+
 import com.example.tp_ihc_android.ui.history.HistoryViewModel;
 
 import java.util.Calendar;
+import java.util.Random;
 
 public class PresencasSingleton {
 
@@ -21,11 +24,12 @@ public class PresencasSingleton {
         setCurrentMonth(calendar.get(Calendar.MONTH));
 
         mvetorPresencas = new boolean[32];
-        for (int i = 0; i < 32; i++) {
+        for (int i = 0; i <= 31; i++) {
             mvetorPresencas[i] = false;
         }
+        randomizePresencas();
         /*
-        mvetorPresencas[2] = true;
+        mvetorPresencas[1] = true;
         mvetorPresencas[3] = true;
         mvetorPresencas[4] = true;
         mvetorPresencas[10] = true;
@@ -81,7 +85,20 @@ public class PresencasSingleton {
     }
 
     private boolean isWeekend(){
-        return (calendar.get(Calendar.DAY_OF_WEEK) == calendar.SUNDAY) || (calendar.get(Calendar.DAY_OF_WEEK) == calendar.SATURDAY);
+        return (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) || (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY);
      }
 
+     private void randomizePresencas(){
+        calendar.add(Calendar.DAY_OF_MONTH, -currentDay+1);
+        Random rand = new Random();
+        for(int i=1; i<currentDay; i++){
+            if(calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY && calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY)
+                mvetorPresencas[i] = rand.nextBoolean();
+
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+            Log.wtf("aqui", Integer.toString(i));
+            Log.wtf("bool", Boolean.toString(mvetorPresencas[i]));
+        }
+        Log.wtf("finalera", Integer.toString(calendar.get(Calendar.DAY_OF_MONTH)));
+     }
 }

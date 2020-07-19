@@ -281,10 +281,11 @@ public class HistoryFragment extends Fragment {
         }, animationtime);
     }
 
-    private void fillCalendarTable(){
-        calendar.set(Calendar.DAY_OF_MONTH, currentDay);
-        boolean isWeekend = calendar.get(Calendar.DAY_OF_WEEK) == 1 || calendar.get(Calendar.DAY_OF_WEEK) == 7;
+    private boolean isWeekend(){
+        return (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) || (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY);
+    }
 
+    private void fillCalendarTable(){
         calendar.set(Calendar.DAY_OF_MONTH, 1);
 
         int maximumDays = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
@@ -296,7 +297,7 @@ public class HistoryFragment extends Fragment {
             if(i < calendar.get(Calendar.DAY_OF_WEEK)-1) continue;
             View child = row.getChildAt(i);
             if(child instanceof FrameLayout){
-                if(!isWeekend) {
+                if(!isWeekend()) {
                     View cDay = ((FrameLayout) child).getChildAt(1);
                     if (currentDay == dayOfMonth) {
                         child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
@@ -310,7 +311,7 @@ public class HistoryFragment extends Fragment {
                     ((TextView) day).setText(String.valueOf(dayOfMonth));
                     dayOfMonth++;
                 }
-
+                calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
             }
         }
 
@@ -318,7 +319,7 @@ public class HistoryFragment extends Fragment {
         for(int i=0; i<row.getChildCount(); i++){
             View child = row.getChildAt(i);
             if(child instanceof FrameLayout){
-                if(!isWeekend) {
+                if(!isWeekend()) {
                     View cDay = ((FrameLayout) child).getChildAt(1);
                     if (currentDay == dayOfMonth) {
                         child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
@@ -332,13 +333,14 @@ public class HistoryFragment extends Fragment {
                     ((TextView) day).setText(String.valueOf(dayOfMonth));
                     dayOfMonth++;
                 }
+                calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
             }
         }
         row = (ViewGroup)root.findViewById(R.id.tr3);
         for(int i=0; i<row.getChildCount(); i++){
             View child = row.getChildAt(i);
             if(child instanceof FrameLayout){
-                if(!isWeekend) {
+                if(!isWeekend()) {
                     View cDay = ((FrameLayout) child).getChildAt(1);
                     if (currentDay == dayOfMonth) {
                         child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
@@ -352,6 +354,7 @@ public class HistoryFragment extends Fragment {
                     ((TextView) day).setText(String.valueOf(dayOfMonth));
                     dayOfMonth++;
                 }
+                calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
             }
         }
 
@@ -360,7 +363,7 @@ public class HistoryFragment extends Fragment {
             if(dayOfMonth > maximumDays) continue;
             View child = row.getChildAt(i);
             if(child instanceof FrameLayout){
-                if(!isWeekend) {
+                if(!isWeekend()) {
                     View cDay = ((FrameLayout) child).getChildAt(1);
                     if (currentDay == dayOfMonth) {
                         child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
@@ -374,6 +377,7 @@ public class HistoryFragment extends Fragment {
                     ((TextView) day).setText(String.valueOf(dayOfMonth));
                     dayOfMonth++;
                 }
+                calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
             }
         }
 
@@ -383,7 +387,7 @@ public class HistoryFragment extends Fragment {
             //if(i < calendar.get(Calendar.DAY_OF_WEEK)-1) continue;
             View child = row.getChildAt(i);
             if(child instanceof FrameLayout){
-                if(!isWeekend) {
+                if(!isWeekend()) {
                     View cDay = ((FrameLayout) child).getChildAt(1);
                     if (currentDay == dayOfMonth) {
                         child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
@@ -397,6 +401,7 @@ public class HistoryFragment extends Fragment {
                     ((TextView) day).setText(String.valueOf(dayOfMonth));
                     dayOfMonth++;
                 }
+                calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
             }
         }
 
@@ -405,7 +410,7 @@ public class HistoryFragment extends Fragment {
             if(dayOfMonth > maximumDays) continue;
             View child = row.getChildAt(i);
             if(child instanceof FrameLayout){
-                if(!isWeekend) {
+                if(!isWeekend()) {
                     View cDay = ((FrameLayout) child).getChildAt(1);
                     if (currentDay == dayOfMonth) {
                         child.setBackground(getResources().getDrawable(R.drawable.ic_border_squared_yellow));
@@ -419,6 +424,7 @@ public class HistoryFragment extends Fragment {
                     ((TextView) day).setText(String.valueOf(dayOfMonth));
                     dayOfMonth++;
                 }
+                calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
             }
         }
 
@@ -521,6 +527,7 @@ public class HistoryFragment extends Fragment {
                 }
             }
         }
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay);
     }
 
     private void clearCalendarTable(){
@@ -665,6 +672,7 @@ public class HistoryFragment extends Fragment {
 
             }
         }
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay);
     }
 
     private void clearCheck(View v){
