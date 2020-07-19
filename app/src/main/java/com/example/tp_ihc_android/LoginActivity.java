@@ -171,7 +171,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void changeActivity(){
-        Intent intent = new Intent(this, MenuBar.class);
+        Intent intent = new Intent(this, BottomNavigationActivity.class);
         startActivity(intent);
     }
 

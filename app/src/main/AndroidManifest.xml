@@ -12,9 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".BottomNavigationActivity"
+             />
 
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyB9mP3yV9TnQzt-UYgxp5b_Xy-iiMn9h4g"/>
-        
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyB9mP3yV9TnQzt-UYgxp5b_Xy-iiMn9h4g" />
+
         <activity
             android:name=".MenuBar"
             android:label="@string/title_activity_menu_bar"

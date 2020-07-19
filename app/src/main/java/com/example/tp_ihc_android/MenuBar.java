@@ -41,8 +41,6 @@ public class MenuBar extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         user = UserSingleton.getInstance(this);
-
-
     }
 
     @Override

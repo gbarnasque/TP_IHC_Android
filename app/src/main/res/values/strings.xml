@@ -57,4 +57,8 @@
     <string name="email_invalido">Entre com um email válido.</string>
     <string name="senha_invalido">Preencha o campo senha.</string>
     <string name="login_invalido">Não foi possível realizar o login. Verifique as informações.</string>
+    <string name="title_activity_bottom_navigation">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
